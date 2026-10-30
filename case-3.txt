@@ -1,0 +1,887 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>LearnHub - Online Learning Platform</title>
+
+<style>
+
+/* GENERAL STYLING */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f6fb;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* NAVIGATION BAR */
+
+header {
+    background: #172554;
+    color: white;
+    padding: 18px 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo {
+    font-size: 27px;
+    font-weight: bold;
+    color: #38bdf8;
+}
+
+nav {
+    display: flex;
+    gap: 22px;
+    flex-wrap: wrap;
+}
+
+nav a {
+    text-decoration: none;
+    color: white;
+    font-size: 15px;
+    transition: 0.3s;
+}
+
+nav a:hover {
+    color: #38bdf8;
+    border-bottom: 2px solid #38bdf8;
+    padding-bottom: 5px;
+}
+
+/* HERO SECTION */
+
+.hero {
+    min-height: 430px;
+    background: linear-gradient(120deg, #172554, #2563eb);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 60px 8%;
+    gap: 30px;
+}
+
+.hero-content {
+    max-width: 600px;
+    animation: slideIn 1.2s ease;
+}
+
+.hero h1 {
+    font-size: 45px;
+    margin-bottom: 15px;
+}
+
+.hero h1 span {
+    color: #38bdf8;
+}
+
+.hero p {
+    font-size: 18px;
+    margin-bottom: 25px;
+}
+
+.hero img {
+    width: 350px;
+    max-width: 45%;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+}
+
+.btn {
+    display: inline-block;
+    background: #38bdf8;
+    color: #172554;
+    padding: 12px 25px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background: white;
+    transform: scale(1.07);
+}
+
+/* COMMON SECTION */
+
+section {
+    padding: 60px 8%;
+    scroll-margin-top: 80px;
+}
+
+.section-title {
+    text-align: center;
+    color: #172554;
+    font-size: 32px;
+    margin-bottom: 35px;
+}
+
+.section-title span {
+    color: #2563eb;
+}
+
+/* CATEGORY CARDS */
+
+.category-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 20px;
+}
+
+.category {
+    background: white;
+    text-align: center;
+    padding: 25px 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    transition: 0.3s;
+}
+
+.category:hover {
+    background: #172554;
+    color: white;
+    transform: translateY(-8px);
+}
+
+.category h3 {
+    font-size: 18px;
+}
+
+/* COURSE CARDS */
+
+.course-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+}
+
+.course-card {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    transition: 0.4s;
+}
+
+.course-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 25px rgba(37,99,235,0.2);
+}
+
+.course-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    display: block;
+}
+
+.course-content {
+    padding: 20px;
+}
+
+.course-content h3 {
+    color: #172554;
+    margin-bottom: 10px;
+}
+
+.course-content p {
+    font-size: 14px;
+    margin-bottom: 12px;
+    color: #555;
+}
+
+.course-content .btn {
+    margin-top: 10px;
+}
+
+/* INSTRUCTOR */
+
+.instructor {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 15px 0;
+}
+
+.instructor img {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+/* COURSE OBJECTIVES */
+
+.objectives {
+    background: #eaf2ff;
+}
+
+.objectives .card-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+}
+
+.objective-card {
+    background: white;
+    padding: 22px;
+    border-radius: 10px;
+    text-align: center;
+    transition: 0.3s;
+}
+
+.objective-card:hover {
+    transform: scale(1.04);
+}
+
+/* VIDEO LESSONS */
+
+.video-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+}
+
+.video-card {
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    transition: 0.3s;
+}
+
+.video-card:hover {
+    transform: translateY(-7px);
+}
+
+.video-card img {
+    width: 100%;
+    height: 170px;
+    object-fit: cover;
+    display: block;
+}
+
+.video-info {
+    padding: 18px;
+}
+
+.video-info h3 {
+    color: #172554;
+    margin-bottom: 8px;
+}
+
+/* PROGRESS SECTION */
+
+.progress-section {
+    background: #172554;
+    color: white;
+}
+
+.progress-section .section-title {
+    color: white;
+}
+
+.progress-card {
+    background: white;
+    color: #333;
+    padding: 25px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.progress-card h3 {
+    color: #172554;
+    margin-bottom: 12px;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 14px;
+    background: #ddd;
+    border-radius: 20px;
+    overflow: hidden;
+    margin: 12px 0;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #38bdf8, #2563eb);
+    border-radius: 20px;
+    animation: grow 2s ease;
+}
+
+.p1 { width: 75%; }
+.p2 { width: 50%; }
+.p3 { width: 90%; }
+
+/* ENROLLMENT */
+
+.enrollment {
+    text-align: center;
+    background: #eaf2ff;
+}
+
+.enrollment p {
+    margin-bottom: 20px;
+}
+
+/* FOOTER */
+
+footer {
+    background: #0f172a;
+    color: white;
+    text-align: center;
+    padding: 22px;
+}
+
+footer a {
+    color: #38bdf8;
+    text-decoration: none;
+}
+
+/* ANIMATIONS */
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes grow {
+    from {
+        width: 0;
+    }
+}
+
+/* RESPONSIVE DESIGN */
+
+@media(max-width: 850px) {
+
+    header {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    nav {
+        justify-content: center;
+    }
+
+    .hero {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .hero img {
+        max-width: 90%;
+        width: 300px;
+    }
+
+    .hero h1 {
+        font-size: 35px;
+    }
+}
+
+@media(max-width: 600px) {
+
+    nav {
+        gap: 12px;
+    }
+
+    nav a {
+        font-size: 12px;
+    }
+
+    .hero h1 {
+        font-size: 29px;
+    }
+
+    .hero p {
+        font-size: 15px;
+    }
+
+    section {
+        padding: 45px 5%;
+    }
+
+    .section-title {
+        font-size: 26px;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- NAVIGATION -->
+
+<header>
+
+    <div class="logo">LearnHub</div>
+
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#categories">Categories</a>
+        <a href="#courses">Courses</a>
+        <a href="#instructors">Instructors</a>
+        <a href="#objectives">Objectives</a>
+        <a href="#videos">Lessons</a>
+        <a href="#progress">Progress</a>
+        <a href="#contact">Contact</a>
+    </nav>
+
+</header>
+
+<!-- HERO SECTION -->
+
+<section class="hero" id="home">
+
+    <div class="hero-content">
+
+        <h1>Learn New Skills <span>Online</span></h1>
+
+        <p>
+            Expand your knowledge, improve your skills
+            and build your future with our online learning
+            platform.
+        </p>
+
+        <a href="#courses" class="btn">
+            Explore Courses
+        </a>
+
+    </div>
+
+    <img
+    src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=700"
+    alt="Online Learning">
+
+</section>
+
+<!-- CATEGORIES -->
+
+<section id="categories">
+
+    <h2 class="section-title">
+        Course <span>Categories</span>
+    </h2>
+
+    <div class="category-container">
+
+        <div class="category">
+            <h3>Web Development</h3>
+        </div>
+
+        <div class="category">
+            <h3>Programming</h3>
+        </div>
+
+        <div class="category">
+            <h3>Data Science</h3>
+        </div>
+
+        <div class="category">
+            <h3>Artificial Intelligence</h3>
+        </div>
+
+        <div class="category">
+            <h3>Graphic Design</h3>
+        </div>
+
+        <div class="category">
+            <h3>Digital Marketing</h3>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- COURSES -->
+
+<section id="courses">
+
+    <h2 class="section-title">
+        Popular <span>Courses</span>
+    </h2>
+
+    <div class="course-container">
+
+        <div class="course-card">
+
+            <img
+            src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=600"
+            alt="Web Development">
+
+            <div class="course-content">
+
+                <h3>Web Development</h3>
+
+                <p>
+                    Learn HTML, CSS and JavaScript basics
+                    to create modern websites.
+                </p>
+
+                <p><b>Duration:</b> 8 Weeks</p>
+
+                <div class="instructor">
+
+                    <img
+                    src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100"
+                    alt="Instructor">
+
+                    <span>John Smith - Instructor</span>
+
+                </div>
+
+                <a href="#enroll" class="btn">
+                    Enroll Now
+                </a>
+
+            </div>
+
+        </div>
+
+        <div class="course-card">
+
+            <img
+            src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?w=600"
+            alt="Python Programming">
+
+            <div class="course-content">
+
+                <h3>Python Programming</h3>
+
+                <p>
+                    Learn Python programming from beginner
+                    to advanced level.
+                </p>
+
+                <p><b>Duration:</b> 6 Weeks</p>
+
+                <div class="instructor">
+
+                    <img
+                    src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=100"
+                    alt="Instructor">
+
+                    <span>Sarah Johnson - Instructor</span>
+
+                </div>
+
+                <a href="#enroll" class="btn">
+                    Enroll Now
+                </a>
+
+            </div>
+
+        </div>
+
+        <div class="course-card">
+
+            <img
+            src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600"
+            alt="Data Science">
+
+            <div class="course-content">
+
+                <h3>Data Science</h3>
+
+                <p>
+                    Understand data analysis, visualization
+                    and machine learning fundamentals.
+                </p>
+
+                <p><b>Duration:</b> 10 Weeks</p>
+
+                <div class="instructor">
+
+                    <img
+                    src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=100"
+                    alt="Instructor">
+
+                    <span>David Wilson - Instructor</span>
+
+                </div>
+
+                <a href="#enroll" class="btn">
+                    Enroll Now
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- INSTRUCTORS -->
+
+<section id="instructors">
+
+    <h2 class="section-title">
+        Expert <span>Instructors</span>
+    </h2>
+
+    <div class="course-container">
+
+        <div class="course-card">
+            <div class="course-content">
+                <div class="instructor">
+                    <img
+                    src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100"
+                    alt="John Smith">
+                    <div>
+                        <h3>John Smith</h3>
+                        <p>Web Development Expert</p>
+                    </div>
+                </div>
+                <p>5+ years of teaching experience.</p>
+            </div>
+        </div>
+
+        <div class="course-card">
+            <div class="course-content">
+                <div class="instructor">
+                    <img
+                    src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=100"
+                    alt="Sarah Johnson">
+                    <div>
+                        <h3>Sarah Johnson</h3>
+                        <p>Python Specialist</p>
+                    </div>
+                </div>
+                <p>Experienced programming instructor.</p>
+            </div>
+        </div>
+
+        <div class="course-card">
+            <div class="course-content">
+                <div class="instructor">
+                    <img
+                    src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=100"
+                    alt="David Wilson">
+                    <div>
+                        <h3>David Wilson</h3>
+                        <p>Data Science Expert</p>
+                    </div>
+                </div>
+                <p>Specialist in analytics and AI.</p>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- LEARNING OBJECTIVES -->
+
+<section class="objectives" id="objectives">
+
+    <h2 class="section-title">
+        Learning <span>Objectives</span>
+    </h2>
+
+    <div class="card-container">
+
+        <div class="objective-card">
+            <h3>Programming Skills</h3>
+            <p>Understand programming concepts and logic.</p>
+        </div>
+
+        <div class="objective-card">
+            <h3>Practical Knowledge</h3>
+            <p>Develop real-world projects and applications.</p>
+        </div>
+
+        <div class="objective-card">
+            <h3>Problem Solving</h3>
+            <p>Improve analytical and logical thinking.</p>
+        </div>
+
+        <div class="objective-card">
+            <h3>Career Development</h3>
+            <p>Prepare for professional opportunities.</p>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- VIDEO LESSONS -->
+
+<section id="videos">
+
+    <h2 class="section-title">
+        Video <span>Lessons</span>
+    </h2>
+
+    <div class="video-container">
+
+        <div class="video-card">
+
+            <img
+            src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=600"
+            alt="HTML Lesson">
+
+            <div class="video-info">
+                <h3>HTML Introduction</h3>
+                <p>Lesson 01 - Introduction to HTML</p>
+                <a href="#courses" class="btn">View Course</a>
+            </div>
+
+        </div>
+
+        <div class="video-card">
+
+            <img
+            src="https://images.unsplash.com/photo-1504639725590-34d0984388bd?w=600"
+            alt="CSS Lesson">
+
+            <div class="video-info">
+                <h3>CSS Fundamentals</h3>
+                <p>Lesson 02 - Styling Websites</p>
+                <a href="#courses" class="btn">View Course</a>
+            </div>
+
+        </div>
+
+        <div class="video-card">
+
+            <img
+            src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?w=600"
+            alt="Python Lesson">
+
+            <div class="video-info">
+                <h3>Python Basics</h3>
+                <p>Lesson 03 - Programming Fundamentals</p>
+                <a href="#courses" class="btn">View Course</a>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- STUDENT PROGRESS -->
+
+<section class="progress-section" id="progress">
+
+    <h2 class="section-title">
+        My Learning <span>Progress</span>
+    </h2>
+
+    <div class="progress-card">
+
+        <h3>HTML & CSS Course</h3>
+        <p>Course Completion: 75%</p>
+
+        <div class="progress-bar">
+            <div class="progress-fill p1"></div>
+        </div>
+
+    </div>
+
+    <div class="progress-card">
+
+        <h3>Python Programming</h3>
+        <p>Course Completion: 50%</p>
+
+        <div class="progress-bar">
+            <div class="progress-fill p2"></div>
+        </div>
+
+    </div>
+
+    <div class="progress-card">
+
+        <h3>Data Science</h3>
+        <p>Course Completion: 90%</p>
+
+        <div class="progress-bar">
+            <div class="progress-fill p3"></div>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ENROLLMENT -->
+
+<section class="enrollment" id="enroll">
+
+    <h2 class="section-title">
+        Start Your <span>Learning Journey</span>
+    </h2>
+
+    <p>
+        Choose your favorite course and improve your skills
+        with LearnHub.
+    </p>
+
+    <a href="mailto:enroll@learnhub.com" class="btn">
+        Enroll Today
+    </a>
+
+</section>
+
+<!-- CONTACT -->
+
+<section id="contact">
+
+    <h2 class="section-title">
+        Contact <span>Us</span>
+    </h2>
+
+    <center>
+
+        <p><b>Email:</b> support@learnhub.com</p>
+
+        <p><b>Phone:</b> +91 9876543210</p>
+
+        <p><b>Address:</b> Andhra Pradesh, India</p>
+
+        <p>
+            <b>Website:</b>
+            www.learnhub.com
+        </p>
+
+    </center>
+
+</section>
+
+<!-- FOOTER -->
+
+<footer>
+
+    <p>© 2026 LearnHub Online Learning Platform</p>
+
+    <p>Designed using HTML and CSS only.</p>
+
+</footer>
+
+</body>
+</html>
